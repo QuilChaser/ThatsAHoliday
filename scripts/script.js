@@ -7,6 +7,7 @@
 const month_list = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function updateResults(holidayJson) {
+  debugger
   let results = "";
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
