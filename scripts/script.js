@@ -40,7 +40,7 @@ document.getElementById("submit").addEventListener("click", function(event) {
   }
 
 
-  console.log(value);
+  console.log(day + month + year);
   const url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
   fetch(url)
     .then(function(response) {
