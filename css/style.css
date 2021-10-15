@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  min-height: 100%;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+h5 {
+  margin-top: .5rem;
+}
+
+header {
+  background: #7cf;
+  padding: 1rem 0;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 1rem;
+}
+
+footer {
+  background: #0cf;
+  padding: 1rem 0;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+a {
+  color: black;
+  text-decoration: underline;
+}
