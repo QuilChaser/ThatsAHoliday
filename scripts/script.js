@@ -29,8 +29,10 @@ function updateResults(holidayJson, imgResponse) {
       results += `<p class="photographerName">Photo By: <a href="${availablePhotos[0].photographer_url}">${availablePhotos[0].photographer}</a></p>`;
       results += "</div>"
     }
+    results += "<div class='text>'"
     results += `<h3>${holidayJson[i].name}</h3>`;
     results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
+    results += "</div>";
     results += "</div>";
   }
   document.getElementById("results").innerHTML = results;
