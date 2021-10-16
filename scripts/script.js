@@ -6,7 +6,11 @@
 
 const month_list = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-function updateResults(holidayJson) {
+import { createClient } from 'pexels';
+
+const client = createClient('YOUR_API_KEY');
+
+function updateResults(holidayJson, imageJson) {
   let results = "";
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
@@ -28,10 +32,7 @@ function updateResults(holidayJson) {
   document.getElementById("results").innerHTML = results;
 }
 
-// httpGetAsync(url)
-
-
-document.getElementById("submit").addEventListener("click", function(event) {
+async function getHolidaysAndImages(event) {
   event.preventDefault();
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
@@ -51,16 +52,32 @@ document.getElementById("submit").addEventListener("click", function(event) {
     return;
   }
 
-
-  console.log(day + month + year);
   const url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
-  fetch(url)
-    .then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      console.log(json);
-      updateResults(json);
-    });
 
-  // document.getElementById("results").style.display = "flex";
-});
+  let response = await fetch(url);
+  let json = await response.json;
+  console.log(json);
+
+  // Get images for the holidays
+  let imageResults = []
+  while (json.length != imageResults.length) {
+    let holidayName = json[imageResults.length].name;
+    const query = holidayName;
+    let photos = "";
+    try {
+      let photos = await client.photos.search({ query, per_page: 1 });
+      imageResults.append(photos);
+    }
+    catch {
+      imageResults.append("");
+    }
+  }
+  console.log(imageResults);
+  updateResults(json, imageResults);
+}
+
+// httpGetAsync(url)
+
+
+
+document.getElementById("submit").addEventListener("click", getHolidaysAndImages);
