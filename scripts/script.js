@@ -77,8 +77,6 @@ document.getElementById("submit").addEventListener("click", function(event) {
         Promise.all(imgJson).then(function(imgJson) {
           updateResults(json, imgJson);
         }
-      })
+      });
     });
-
-  // document.getElementById("results").style.display = "flex";
 });
