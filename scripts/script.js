@@ -52,6 +52,8 @@ async function getHolidaysAndImages(event) {
 
   let url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
 
+  debugger;
+
   let response = await fetch(url);
   let json = await response.json;
   console.log(json);
