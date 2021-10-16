@@ -22,6 +22,10 @@ function updateResults(holidayJson, imgResponse) {
   results += `<h2>Holidays on ${holidayJson[0].week_day}, ${day} ${month_list[parseInt(month)]} ${year} in the US:</h2>`;
   for (let i = 0; i < holidayJson.length; i++) {
     results += "<div class='holiday'>";
+    results += "<div class='text>'"
+    results += `<h3>${holidayJson[i].name}</h3>`;
+    results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
+    results += "</div>";
     let availablePhotos = imgResponse[i].photos;
     if (availablePhotos.length === 1) {
       results += "<div class='holidayPhotoBlock'>"
@@ -29,10 +33,6 @@ function updateResults(holidayJson, imgResponse) {
       results += `<p class="photographerName">Photo By: <a href="${availablePhotos[0].photographer_url}">${availablePhotos[0].photographer}</a></p>`;
       results += "</div>"
     }
-    results += "<div class='text>'"
-    results += `<h3>${holidayJson[i].name}</h3>`;
-    results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
-    results += "</div>";
     results += "</div>";
   }
   document.getElementById("results").innerHTML = results;
