@@ -4,11 +4,10 @@
 // The Image api
 // https://www.pexels.com/api/documentation/#authorization
 
-const month_list = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const month_list = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function updateResults(holidayJson) {
   let results = "";
-  debugger
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
   const year = document.getElementById("year").value;
@@ -19,7 +18,7 @@ function updateResults(holidayJson) {
     return;
   }
 
-  results += `<h2>Holidays on ${holidayJson[0].week_day}, ${day} ${month_list[month]} ${year} in the US:</h2>`;
+  results += `<h2>Holidays on ${holidayJson[0].week_day}, ${day} ${month_list[parseInt(month)]} ${year} in the US:</h2>`;
   for (let i = 0; i < holidayJson.length; i++) {
     results += "<div class='holiday'>";
     results += `<h3>${holidayJson[i].name}</h3>`;
