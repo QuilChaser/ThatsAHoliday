@@ -16,7 +16,6 @@ function updateResults(holidayJson, imgResponse) {
   if (holidayJson.length === 0) { // There is no holidays
     results += `<h2>There is no holiday on ${day} ${month_list[parseInt(month)]} ${year}</h2>`;
     document.getElementById("results").innerHTML = results;
-    document.getElementById("results").style.display = "block";
     return;
   }
 
@@ -32,7 +31,6 @@ function updateResults(holidayJson, imgResponse) {
     results += "</div>";
   }
   document.getElementById("results").innerHTML = results;
-  document.getElementById("results").style.display = "block";
 }
 
 // httpGetAsync(url)
@@ -49,12 +47,17 @@ document.getElementById("submit").addEventListener("click", function(event) {
 
   const months_w_30_days = ['4', '6', '5', '9', '11'];
 
+  document.getElementById("results").style.display = "block";
+
   if (month === 28 && day > 28) {
     console.error("February only has 28 days this year.");
+    document.getElementById("results").innerHTML = "<h2>February only has 28 days this year.</h2>";  
     return;
   }
   if (months_w_30_days.includes(month) && day === 31) {
     console.error("That month only has 30 days.");
+    let results = `<h2>${month_list[parseInt(mmonth)]} does not have 31 days.</h2>`;
+    document.getElementById("results").innerHTML = results;
     return;
   }
 
