@@ -70,7 +70,7 @@ document.getElementById("submit").addEventListener("click", function(event) {
         }));
       }
       Promise.all(promises).then(function(imgResponses) {
-        updateResults(json, imgresponses.map(response => {return response.json();}));
+        updateResults(json, imgResponses.map(response => {return response.json();}));
       })
     });
 
