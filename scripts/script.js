@@ -8,6 +8,7 @@ const month_list = ["", "January", "February", "March", "April", "May", "June", 
 
 function updateResults(holidayJson, imgResponse) {
   let results = "";
+
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
   const year = document.getElementById("year").value;
@@ -30,6 +31,7 @@ function updateResults(holidayJson, imgResponse) {
     results += "</div>";
   }
   document.getElementById("results").innerHTML = results;
+  document.getElementById("results").style.display = "block";
 }
 
 // httpGetAsync(url)

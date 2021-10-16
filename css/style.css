@@ -86,7 +86,11 @@ form label {
     border-radius: 2rem;
 }
 
-#results h2 {
+#results {
+  display: none;
+}
+
+#results h2, #explain h2 {
     text-align: center;
     text-decoration: underline;
     padding-bottom: 1rem;
