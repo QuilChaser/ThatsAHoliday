@@ -16,6 +16,7 @@ function updateResults(holidayJson, imgResponse) {
   if (holidayJson.length === 0) { // There is no holidays
     results += `<h2>There is no holiday on ${day} ${month_list[parseInt(month)]} ${year}</h2>`;
     document.getElementById("results").innerHTML = results;
+    document.getElementById("results").style.display = "block";
     return;
   }
 
