@@ -21,13 +21,12 @@ function updateResults(holidayJson, imgResponse) {
   results += `<h2>Holidays on ${holidayJson[0].week_day}, ${day} ${month_list[parseInt(month)]} ${year} in the US:</h2>`;
   for (let i = 0; i < holidayJson.length; i++) {
     results += "<div class='holiday'>";
-    results += `<h3>${holidayJson[i].name}</h3>`;
-    results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
-
     let availablePhotos = imgResponse[i].photos;
     if (availablePhotos.length === 1) {
       results += `<img src='${availablePhotos[0].src.medium} class="holidayPhoto">'`;
     }
+    results += `<h3>${holidayJson[i].name}</h3>`;
+    results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
     results += "</div>";
   }
   document.getElementById("results").innerHTML = results;
