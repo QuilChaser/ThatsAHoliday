@@ -6,9 +6,7 @@
 
 const month_list = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-let API_key = '563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8';
-
-function updateResults(holidayJson, imageJson) {
+function updateResults(holidayJson) {
   let results = "";
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
@@ -30,7 +28,10 @@ function updateResults(holidayJson, imageJson) {
   document.getElementById("results").innerHTML = results;
 }
 
-async function getHolidaysAndImages(event) {
+// httpGetAsync(url)
+
+
+document.getElementById("submit").addEventListener("click", function(event) {
   event.preventDefault();
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
@@ -50,43 +51,16 @@ async function getHolidaysAndImages(event) {
     return;
   }
 
-  let url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
 
-  debugger;
-  try {
-    let response = await fetch(url);
-    let json = await response.json;
-    console.log(json);
+  console.log(day + month + year);
+  const url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
+  fetch(url)
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json);
+      updateResults(json);
+    });
 
-    // Get images for the holidays
-    let imageResults = []
-    while (json.length != imageResults.length) {
-      let holidayName = json[imageResults.length].name;
-      const query = holidayName;
-      let photos = "";
-      try {
-        let url = `https://api.pexels.com/v1/search?query=${holidayName.replaceAll(" ", "%20")}&per_page=1`;
-        let photos = await fetch(url, {
-          method: 'get',
-          headers: new Headers({
-            'Authorization': '563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8'
-          })
-        });
-        imageResults.append(photos);
-      } catch {
-        imageResults.append("");
-      }
-    }
-    console.log(imageResults);
-    updateResults(json, imageResults);
-  }
-  catch {
-    console.log(url + " failed");
-  }
-}
-
-// httpGetAsync(url)
-
-
-
-document.getElementById("submit").addEventListener("click", getHolidaysAndImages);
+  // document.getElementById("results").style.display = "flex";
+});
