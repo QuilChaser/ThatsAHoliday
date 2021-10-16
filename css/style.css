@@ -36,6 +36,17 @@ header h1 {
   padding: 1rem;
 }
 
+.holiday {
+  background: #eee;
+  overflow: auto;
+  padding: 2rem;
+}
+
+.holidayPhoto {
+  float: right;
+  width: 50%;
+}
+
 footer {
   background: #0cf;
   padding: 1rem 0;
