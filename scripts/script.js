@@ -6,7 +6,7 @@
 
 const month_list = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-iimport { createClient } from 'pexels';
+iimport { createClient } from 'pexels/src/createClient.ts';
 
 const client = createClient('563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8');
 
