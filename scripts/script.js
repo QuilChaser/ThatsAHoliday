@@ -22,7 +22,7 @@ function updateResults(holidayJson, imgResponse) {
   for (let i = 0; i < holidayJson.length; i++) {
     results += "<div class='holiday'>";
     results += `<h3>${holidayJson[i].name}</h3>`;
-    results += `<h4>Recognized because of: ${holidayJson[i].name}</h4>`;
+    results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
 
     let availablePhotos = imgResponse[i].photos;
     if (availablePhotos.length === 1) {
