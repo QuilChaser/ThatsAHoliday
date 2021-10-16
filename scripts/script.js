@@ -63,7 +63,7 @@ async function getHolidaysAndImages(event) {
     const query = holidayName;
     let photos = "";
     try {
-      let url `https://api.pexels.com/v1/search?query=${holidayName.replaceAll(" ", "%20")}&per_page=1`;
+      let url = `https://api.pexels.com/v1/search?query=${holidayName.replaceAll(" ", "%20")}&per_page=1`;
       let photos = await fetch(url, {
         method: 'get',
         headers: new Headers({
