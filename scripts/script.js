@@ -75,7 +75,7 @@ document.getElementById("submit").addEventListener("click", function(event) {
           return response.json();
         });
         Promise.all(imgJson).then(function(imgJson) {
-          updateResults(json, imgJson));
+          updateResults(json, imgJson);
         }
       })
     });
