@@ -23,7 +23,7 @@ function updateResults(holidayJson, imgResponse) {
     results += "<div class='holiday'>";
     let availablePhotos = imgResponse[i].photos;
     if (availablePhotos.length === 1) {
-      results += `<img src='${availablePhotos[0].src.medium} class="holidayPhoto">'`;
+      results += `<img src='${availablePhotos[0].src.medium}' class="holidayPhoto">'`;
     }
     results += `<h3>${holidayJson[i].name}</h3>`;
     results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
