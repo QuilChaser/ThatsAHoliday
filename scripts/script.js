@@ -24,7 +24,10 @@ function updateResults(holidayJson, imgResponse) {
     results += "<div class='holiday'>";
     let availablePhotos = imgResponse[i].photos;
     if (availablePhotos.length === 1) {
+      results += "<div class='holidayPhotoBlock'>"
       results += `<img src='${availablePhotos[0].src.medium}' class="holidayPhoto">`;
+      results += `<p class="photographerName">Photo By: <a href="${availablePhotos[0].photographer_url}">${availablePhotos[0].photographer}</a></p>`;
+      results += "</div>"
     }
     results += `<h3>${holidayJson[i].name}</h3>`;
     results += `<h4>Recognized because of: ${holidayJson[i].type}</h4>`;
@@ -51,7 +54,7 @@ document.getElementById("submit").addEventListener("click", function(event) {
 
   if (month === 28 && day > 28) {
     console.error("February only has 28 days this year.");
-    document.getElementById("results").innerHTML = "<h2>February only has 28 days this year.</h2>";  
+    document.getElementById("results").innerHTML = "<h2>February only has 28 days this year.</h2>";
     return;
   }
   if (months_w_30_days.includes(month) && day === 31) {
