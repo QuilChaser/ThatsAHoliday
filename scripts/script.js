@@ -6,9 +6,7 @@
 
 const month_list = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-import createClient from '/pexels/src/createClient.ts';
-
-const client = createClient('563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8');
+let API_key = '563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8';
 
 function updateResults(holidayJson, imageJson) {
   let results = "";
@@ -52,7 +50,7 @@ async function getHolidaysAndImages(event) {
     return;
   }
 
-  const url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
+  let url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
 
   let response = await fetch(url);
   let json = await response.json;
@@ -65,10 +63,15 @@ async function getHolidaysAndImages(event) {
     const query = holidayName;
     let photos = "";
     try {
-      let photos = await client.photos.search({ query, per_page: 1 });
+      let url `https://api.pexels.com/v1/search?query=${holidayName.replaceAll(" ", "%20")}&per_page=1`;
+      let photos = await fetch(url, {
+        method: 'get',
+        headers: new Headers({
+          'Authorization': '563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8'
+        })
+      });
       imageResults.append(photos);
-    }
-    catch {
+    } catch {
       imageResults.append("");
     }
   }
