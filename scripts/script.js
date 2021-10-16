@@ -71,7 +71,9 @@ document.getElementById("submit").addEventListener("click", function(event) {
       }
       Promise.all(promises).then(function(imgResponses) {
 
-        let imgJson = imgResponses.map(response => {return response.json();}));
+        let imgJson = imgResponses.map(response => {
+          return response.json();
+        });
         Promise.all(imgJson).then(function(imgJson) {
           updateResults(json, imgJson));
         }
