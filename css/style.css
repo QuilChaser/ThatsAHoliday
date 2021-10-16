@@ -36,6 +36,62 @@ header h1 {
   padding: 1rem;
 }
 
+form {
+    background: #eee;
+    padding: 2rem;
+    padding-top: .5rem;
+    width: 90%;
+    margin: auto;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+
+form label {
+    display: block;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+#day, #month, #year {
+    text-align: center;
+}
+
+#submit {
+    display:block;
+    background: #7cf;
+    border: none;
+    border-radius: 2rem;
+    padding: .5rem 1rem;
+    margin: auto;
+}
+#submit:hover {
+    background: #3cf;
+    cursor:pointer;
+}
+#submit:active {
+    background: #0cf;
+    color: black;
+}
+
+#results {
+    background: #eee;
+    border-radius: 2rem;
+    padding-top: 2rem;
+}
+
+.holiday {
+    border-radius: 2rem;
+}
+
+#results h2 {
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 1rem;
+
+}
+
 .holiday {
   background: #eee;
   overflow: auto;
