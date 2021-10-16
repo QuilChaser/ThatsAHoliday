@@ -6,9 +6,9 @@
 
 const month_list = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-import { createClient } from 'pexels';
+iimport { createClient } from 'pexels';
 
-const client = createClient('YOUR_API_KEY');
+const client = createClient('563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8');
 
 function updateResults(holidayJson, imageJson) {
   let results = "";
