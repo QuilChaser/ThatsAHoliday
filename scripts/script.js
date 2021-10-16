@@ -53,32 +53,36 @@ async function getHolidaysAndImages(event) {
   let url = "https://holidays.abstractapi.com/v1/?api_key=effdd4458cac464698cb3c7c9eb78893&country=US&year=" + year + "&month=" + month + "&day=" + day;
 
   debugger;
+  try {
+    let response = await fetch(url);
+    let json = await response.json;
+    console.log(json);
 
-  let response = await fetch(url);
-  let json = await response.json;
-  console.log(json);
-
-  // Get images for the holidays
-  let imageResults = []
-  while (json.length != imageResults.length) {
-    let holidayName = json[imageResults.length].name;
-    const query = holidayName;
-    let photos = "";
-    try {
-      let url = `https://api.pexels.com/v1/search?query=${holidayName.replaceAll(" ", "%20")}&per_page=1`;
-      let photos = await fetch(url, {
-        method: 'get',
-        headers: new Headers({
-          'Authorization': '563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8'
-        })
-      });
-      imageResults.append(photos);
-    } catch {
-      imageResults.append("");
+    // Get images for the holidays
+    let imageResults = []
+    while (json.length != imageResults.length) {
+      let holidayName = json[imageResults.length].name;
+      const query = holidayName;
+      let photos = "";
+      try {
+        let url = `https://api.pexels.com/v1/search?query=${holidayName.replaceAll(" ", "%20")}&per_page=1`;
+        let photos = await fetch(url, {
+          method: 'get',
+          headers: new Headers({
+            'Authorization': '563492ad6f91700001000001baf98844f777467692cd3fc4ccd23ad8'
+          })
+        });
+        imageResults.append(photos);
+      } catch {
+        imageResults.append("");
+      }
     }
+    console.log(imageResults);
+    updateResults(json, imageResults);
   }
-  console.log(imageResults);
-  updateResults(json, imageResults);
+  catch {
+    console.log(url + " failed");
+  }
 }
 
 // httpGetAsync(url)
