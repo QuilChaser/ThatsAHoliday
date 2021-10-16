@@ -13,7 +13,7 @@ function updateResults(holidayJson, imgResponse) {
   const year = document.getElementById("year").value;
 
   if (holidayJson.length === 0) { // There is no holidays
-    results += `<h2>There is no holiday on ${day}/${month}/${year}</h2>`;
+    results += `<h2>There is no holiday on ${day} ${month_list[parseInt(month)]} ${year}</h2>`;
     document.getElementById("results").innerHTML = results;
     return;
   }
@@ -23,6 +23,7 @@ function updateResults(holidayJson, imgResponse) {
     results += "<div class='holiday'>";
     results += `<h3>${holidayJson[i].name}</h3>`;
     results += `<h4>Recognized because of: ${holidayJson[i].name}</h4>`;
+    results += `<img src='${imgResponse[i].src.medium} class="holidayPhoto">'`;
     results += "</div>";
   }
   document.getElementById("results").innerHTML = results;
